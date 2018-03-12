@@ -1,8 +1,10 @@
 # micros
 
-http://localhost:8765/auth/login
+http://localhost:8765/auth/cred/login
 
 {
-  username: "",
-  password: ""
+  "username": "",
+  "password": ""
 }
+
+Need JWT
