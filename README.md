@@ -7,4 +7,7 @@ http://localhost:8765/auth/cred/login
   "password": ""
 }
 
-Need JWT
+- [ ] Eureka + Zuul + Authentication up
+- [ ] Connect to local server
+- [x] Login/Register
+- [ ] Need JWT/Cookies
