@@ -16,9 +16,13 @@ public class UserService {
 
 	public User checkUser(User u) {
 		Optional<User> ret = userRepo.findByUsername(u.getUsername());
-		if (ret.isPresent())
-			return ret.get();
-		else
+		if (ret.isPresent()) {
+			User login = ret.get();
+			if (u.getPassword().equals(login.getPassword()))
+				return login;
+			else
+				return null;
+		} else
 			return null;
 	}
 
