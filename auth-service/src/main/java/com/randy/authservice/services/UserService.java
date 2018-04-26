@@ -13,8 +13,14 @@ public class UserService {
 
 	@Autowired
 	UserRepository userRepo;
-
+	
 	public User checkUser(User u) {
+		if (u == null || u.getUsername().isEmpty() || u.getPassword().isEmpty() || u.getUsername() == null || u.getPassword() == null)
+			return null;
+		else 
+			return new User();
+	}
+	/*public User checkUser(User u) {
 		Optional<User> ret = userRepo.findByUsername(u.getUsername());
 		if (ret.isPresent()) {
 			User login = ret.get();
@@ -24,7 +30,7 @@ public class UserService {
 				return null;
 		} else
 			return null;
-	}
+	}*/
 
 	public User regUser(User u) {
 		Optional<User> ret = userRepo.findByUsername(u.getUsername());
