@@ -15,7 +15,7 @@ public class UserService {
 	UserRepository userRepo;
 	
 	public User checkUser(User u) {
-		if (u == null || u.getUsername().isEmpty() || u.getPassword().isEmpty() || u.getUsername() == null || u.getPassword() == null)
+		if (u == null || u.getUsername() == null || u.getUsername().isEmpty() || u.getPassword() == null || u.getPassword().isEmpty())
 			return null;
 		else 
 			return new User();

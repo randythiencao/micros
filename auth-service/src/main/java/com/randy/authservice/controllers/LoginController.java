@@ -51,6 +51,11 @@ public class LoginController {
 	@PostMapping("/register")
 	public ResponseEntity<?> register(@RequestBody User u)
 	{
+		User ret = logService.regUser(u);
+		if(ret != null) {
+			System.out.println("returning failed");
+			return new ResponseEntity<>("username exists " + u, HttpStatus.UNAUTHORIZED);
+		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
