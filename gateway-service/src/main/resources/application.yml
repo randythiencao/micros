@@ -5,13 +5,13 @@ spring:
 info:
   component: Edge Server
   
-endpoints:
-  restart:
-    enabled: true
-  shutdown:
-    enabled: true
-  health:
-    sensitive: false
+#endpoints:
+#  restart:
+#    enabled: true
+#  shutdown:
+#    enabled: true
+#  health:
+#    sensitive: false
 
 zuul:
 #  prefix: /api
@@ -19,16 +19,18 @@ zuul:
     authentication: 
       path: /auth/**
       serviceId: auth-service
+#hystrix.command.default.execution.timeout.enabled
+#ribbon:
+#  eureka:
+#    enabled: true
 
-ribbon:
-  eureka:
-    enabled: true
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
-    registerWithEureka: true
+    register-with-eureka: true
+    fetch-registry: true
       
 server:
   port: 8765

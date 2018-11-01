@@ -14,23 +14,23 @@ public class UserService {
 	@Autowired
 	UserRepository userRepo;
 	
-	public User checkUser(User u) {
+/*	public User checkUser(User u) {
 		if (u == null || u.getUsername() == null || u.getUsername().isEmpty() || u.getPassword() == null || u.getPassword().isEmpty())
 			return null;
 		else 
 			return new User();
-	}
-	/*public User checkUser(User u) {
+	}*/
+	public User checkUser(User u) {
 		Optional<User> ret = userRepo.findByUsername(u.getUsername());
 		if (ret.isPresent()) {
 			User login = ret.get();
-			if (u.getPassword().equals(login.getPassword()))
+			if (login.getPassword().equals(u.getPassword()))
 				return login;
 			else
 				return null;
 		} else
 			return null;
-	}*/
+	}
 
 	public User regUser(User u) {
 		Optional<User> ret = userRepo.findByUsername(u.getUsername());

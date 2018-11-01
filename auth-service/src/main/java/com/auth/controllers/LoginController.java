@@ -34,15 +34,11 @@ public class LoginController {
 		else {
 			
 			ObjectMapper mapper = new ObjectMapper();
-			User hi = new User();
-			hi.setFirstname("success");
-			hi.setLastname("return");
 
 
 			//Object to JSON in String
-			String jsonInString = mapper.writeValueAsString(hi);
+			String jsonInString = mapper.writeValueAsString(ret);
 		
-			System.out.println("returning success");
 			return new ResponseEntity<>(jsonInString, HttpStatus.OK);
 		}
 		
