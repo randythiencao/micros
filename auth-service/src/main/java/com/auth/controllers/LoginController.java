@@ -39,7 +39,7 @@ public class LoginController {
 			//Object to JSON in String
 			String jsonInString = mapper.writeValueAsString(ret);
 		
-			return new ResponseEntity<>(jsonInString, HttpStatus.OK);
+			return new ResponseEntity<>(ret, HttpStatus.OK);
 		}
 		
 	}
@@ -48,9 +48,9 @@ public class LoginController {
 	public ResponseEntity<?> register(@RequestBody User u)
 	{
 		User ret = logService.regUser(u);
-		if(ret != null) {
+		if(ret == null) {
 			System.out.println("returning failed");
-			return new ResponseEntity<>("username exists " + u, HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<>("username exists for " + u.getUsername(), HttpStatus.UNAUTHORIZED);
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
