@@ -37,9 +37,10 @@ create table USER_ROLES
 
 create table user_state
 (
-	 USER_ID NUMBER PRIMARY KEY, 
-	 CREATED_DT TIMESTAMP PRIMARY KEY,
-	 URL VARCHAR2(400)
+	 USER_ID NUMBER, 
+	 CREATED_DT TIMESTAMP,
+	 URL VARCHAR2(400),
+	 primary key (USER_ID, URL)
 );
 
 

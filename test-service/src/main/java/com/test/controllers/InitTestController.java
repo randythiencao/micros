@@ -17,7 +17,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.test.entities.UserState;
 import com.test.services.RecentURLService;
 
-@CrossOrigin(origins = "http://10.20.181.167:4200")
+@CrossOrigin(origins = "http://10.21.172.57:4200")
 @RestController
 @RequestMapping("/initTest")
 public class InitTestController {
@@ -27,10 +27,11 @@ public class InitTestController {
 	@GetMapping("/{id}/recentURL")
 	public ResponseEntity<?> getRecentURL(@PathVariable int id) throws JsonProcessingException {
 		List<UserState> uState = urlService.getUrls(id);
-		for(UserState uS : uState) {
-			System.out.println(uS.toString());
+		if(uState == null || uState.size() == 0) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}else {
+			return new ResponseEntity<>(uState,HttpStatus.OK);
 		}
-		return null;
 	}
 	
 	@PostMapping("/recentURL")
@@ -38,6 +39,6 @@ public class InitTestController {
 		if(urlService.setURL(u) != null) {
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
-		return null;
+		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 }

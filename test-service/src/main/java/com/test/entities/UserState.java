@@ -3,6 +3,7 @@ package com.test.entities;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -11,47 +12,37 @@ import javax.persistence.Table;
 @Table(name="user_state")
 public class UserState {
 
-	@Id
-	@Column(name="user_id")
-	private int userId;
+	@EmbeddedId
+	private UserStateId userStateId;
 	
 	@Column(name="CREATED_DT")
 	private Timestamp createdDt;
-	
-	private String url;
+
+	public UserState(UserStateId userStateId, Timestamp createdDt) {
+		super();
+		this.userStateId = userStateId;
+		this.createdDt = createdDt;
+	}
 
 	public UserState() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getUserId() {
-		return userId;
+	public UserStateId getUserStateId() {
+		return userStateId;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUserStateId(UserStateId userStateId) {
+		this.userStateId = userStateId;
 	}
 
 	public Timestamp getCreatedDt() {
 		return createdDt;
 	}
 
-	public void setCreatedDt(Timestamp timestamp) {
-		this.createdDt = timestamp;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", createdDt=" + createdDt + ", url=" + url + "]";
+	public void setCreatedDt(Timestamp createdDt) {
+		this.createdDt = createdDt;
 	}
 
 	@Override
@@ -59,8 +50,7 @@ public class UserState {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((createdDt == null) ? 0 : createdDt.hashCode());
-		result = prime * result + ((url == null) ? 0 : url.hashCode());
-		result = prime * result + userId;
+		result = prime * result + ((userStateId == null) ? 0 : userStateId.hashCode());
 		return result;
 	}
 
@@ -78,15 +68,19 @@ public class UserState {
 				return false;
 		} else if (!createdDt.equals(other.createdDt))
 			return false;
-		if (url == null) {
-			if (other.url != null)
+		if (userStateId == null) {
+			if (other.userStateId != null)
 				return false;
-		} else if (!url.equals(other.url))
-			return false;
-		if (userId != other.userId)
+		} else if (!userStateId.equals(other.userStateId))
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "UserState [userStateId=" + userStateId + ", createdDt=" + createdDt + "]";
+	}
+	
 	
 	
 }
