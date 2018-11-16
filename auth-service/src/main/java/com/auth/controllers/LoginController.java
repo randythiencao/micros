@@ -14,47 +14,35 @@ import com.auth.services.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://10.20.181.167:4200")
 @RestController
 @RequestMapping("cred")
 public class LoginController {
 	@Autowired
 	UserService logService;
-	
+
 	@PostMapping("/login")
-	public ResponseEntity<?> login(@RequestBody User u) throws JsonProcessingException
-	{
+	public ResponseEntity<?> login(@RequestBody User u) throws JsonProcessingException {
 		User ret = logService.checkUser(u);
 		System.out.println(u);
-		if (ret == null)
-		{
+		if (ret == null) {
 			System.out.println("returning failed");
 			return new ResponseEntity<>("no user found for " + u, HttpStatus.UNAUTHORIZED);
-		}
-		else {
-			
-			ObjectMapper mapper = new ObjectMapper();
+		} else {
 
-
-			//Object to JSON in String
-			String jsonInString = mapper.writeValueAsString(ret);
-		
 			return new ResponseEntity<>(ret, HttpStatus.OK);
 		}
-		
+
 	}
-	
+
 	@PostMapping("/register")
-	public ResponseEntity<?> register(@RequestBody User u)
-	{
+	public ResponseEntity<?> register(@RequestBody User u) {
 		User ret = logService.regUser(u);
-		if(ret == null) {
+		if (ret == null) {
 			System.out.println("returning failed");
 			return new ResponseEntity<>("username exists for " + u.getUsername(), HttpStatus.UNAUTHORIZED);
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
-	
 
 }

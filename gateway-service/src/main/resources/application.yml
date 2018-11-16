@@ -19,6 +19,9 @@ zuul:
     authentication: 
       path: /auth/**
       serviceId: auth-service
+    initTest:
+      path: /test/**
+      serviceId: test-service
 #hystrix.command.default.execution.timeout.enabled
 #ribbon:
 #  eureka:

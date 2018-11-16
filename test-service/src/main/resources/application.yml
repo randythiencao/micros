@@ -1,0 +1,27 @@
+spring:
+  mvc:
+    dispatchOptionsRequest: true
+  application:
+    name: test-service
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    database: ORACLE
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: notyelp
+    password: p4ssw0rd
+    driverClassName: oracle.jdbc.OracleDriver
+    tomcat:
+      initial-size: 1
+server:
+  port: 2234
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+      #      defaultZone: http://18.217.124.245:8761/eureka/,http://18.217.124.245:8762/eureka/
