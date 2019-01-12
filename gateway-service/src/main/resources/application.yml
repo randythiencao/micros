@@ -20,7 +20,7 @@ zuul:
       path: /auth/**
       serviceId: auth-service
     initTest:
-      path: /test/**
+      path: /updater/**
       serviceId: test-service
 #hystrix.command.default.execution.timeout.enabled
 #ribbon:

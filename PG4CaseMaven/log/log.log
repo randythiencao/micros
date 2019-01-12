@@ -1,0 +1,4 @@
+2018-12-20 10:51:07.427 INFO [main] [com.main.PG4Case] [startDriver] [com.main.PG4Case.startDriver(PG4Case.java:198)] - Parents: 1
+2018-12-20 10:51:07.448 INFO [main] [com.main.PG4Case] [startDriver] [com.main.PG4Case.startDriver(PG4Case.java:199)] - Children: 2
+2018-12-20 11:41:03.264 INFO [main] [com.main.PG4Case] [startDriver] [com.main.PG4Case.startDriver(PG4Case.java:202)] - Parents: 1
+2018-12-20 11:41:03.291 INFO [main] [com.main.PG4Case] [startDriver] [com.main.PG4Case.startDriver(PG4Case.java:203)] - Children: 2

@@ -14,7 +14,7 @@ import com.auth.services.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@CrossOrigin(origins = "http://10.21.172.57:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("cred")
 public class LoginController {
